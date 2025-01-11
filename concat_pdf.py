@@ -108,11 +108,11 @@ def parse_args(argv):
 
 def main(argv=None):
     args = parse_args(argv)
-    if None in (args.dir, args.file_name, args.read_formats):
+    if None in (args.dir, args.file_out, args.read_formats):
         print("Run with -h or --help to get help")
         exit(0)
 
-    CreatePDF(args.dir, args.file_name, read_formats=args.read_formats, w=args.width, img_list=args.img_list, fit_into_page=args.fit)
+    CreatePDF(args.dir, args.file_out, read_formats=args.read_formats, w=args.width, img_list=args.img_list, fit_into_page=args.fit)
 
 
 if __name__ == '__main__':
