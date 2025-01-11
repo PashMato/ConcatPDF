@@ -12,7 +12,7 @@ from matplotlib import pyplot as plt
 import argparse
 
 
-def CreatePDF(input_dir: str, out_name: str, read_formats: tuple[str] = ("png", "jpeg", "jpg"), w: int = 600, img_list=None, fit_into_page: bool = True) -> None:
+def CreatePDF(input_dir: str, out_name: str, read_formats: tuple[str] = ("png", "jpeg", "jpg"), w: int = 600, img_list=None, fit_into_page: bool = False) -> None:
     """
     A function that gets a directory name and extracts all the images to one PDF,
     she does so by creating a temporary folder with a pdf for each image and then merging them
@@ -94,7 +94,7 @@ def CreatePDF(input_dir: str, out_name: str, read_formats: tuple[str] = ("png", 
 def parse_args(argv):
     parser = argparse.ArgumentParser()
     parser.add_argument("-d", "--dir", type=str, help="The Input dir")
-    parser.add_argument('-n', '--file_name', type=str, help="What is The name of your output file")
+    parser.add_argument('-o', '--file_out', type=str, help="What is The name of your output file")
     parser.add_argument('-f', '--fit', default=False,
                         help="fits the images into the page (constant ratio of [x, x * sqrt(2)])", action="store_true")
     parser.add_argument("--read_formats", nargs="*", type=str, help="What formats to read from",
@@ -112,7 +112,7 @@ def main(argv=None):
         print("Run with -h or --help to get help")
         exit(0)
 
-    CreatePDF(args.dir, args.file_name, read_formats=args.read_formats, w=args.width, img_list=args.img_list)
+    CreatePDF(args.dir, args.file_name, read_formats=args.read_formats, w=args.width, img_list=args.img_list, fit_into_page=args.fit)
 
 
 if __name__ == '__main__':
