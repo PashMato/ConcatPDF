@@ -61,7 +61,7 @@ def CreatePDF(input_dir: str, out_name: str, read_formats: tuple[str] = ("png", 
             x = y = 0
             w, h = page_size
 
-        print(f"Page size: ({w, h}), Image: '{img_path}'")
+        print(f"Page size: {w, h}, Image: '{img_path}'")
 
         # change the pdf size accordingly
         pdf.w, pdf.h = page_size
